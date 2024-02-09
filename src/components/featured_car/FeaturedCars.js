@@ -6,7 +6,7 @@ import Footer from '../../components/footer/Footer';
 
 const FeaturedCars = () => {
   // const navigate = useNavigate();
-  // const [data,setData] = useState([]);
+  const [data,setData] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage] = useState(3);
