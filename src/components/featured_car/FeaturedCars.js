@@ -66,10 +66,10 @@ const FeaturedCars = () => {
   const handleNavigateToMessagePage = (id) => {
     if (localStorage.getItem('authToken') !== "true") {
         console.log("Navigating to MessagesPage");
-        navigate('MessagesPage', { state: { id_auteur: id } });
+        navigate('/MessagesPage', { state: { id_auteur: id } });
     } else {
         console.log("Navigating to Login");
-        navigate('Login');
+        navigate('/Login');
     }
 };
 
