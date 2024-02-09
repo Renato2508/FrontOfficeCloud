@@ -1,0 +1,93 @@
+/* FavoriteCars.css */
+
+.favorite-cars-container {
+    text-align: center;
+    background-color: #212121; /* Dark background color */
+    padding: 40px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+  }
+  
+  .favorite-cars-intro {
+    margin-bottom: 40px; /* Increased margin */
+  }
+  
+  .favorite-cars-intro h2 {
+    font-size: 36px;
+    color: #18a5a7; /* Accent color */
+    margin-bottom: 10px; /* Increased margin */
+  }
+  
+  .favorite-cars-intro p {
+    font-size: 18px;
+    color: #fff; /* White text */
+  }
+  
+  .car-list-favorite-cars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .car-favorite-cars {
+    position: relative;
+    width: 300px;
+    margin: 20px;
+    border: 1px solid #333; /* Darker border */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Utiliser la disposition flexbox */
+    flex-direction: column; /* Aligner les éléments verticalement */
+    justify-content: space-between; /* Espacement uniforme entre les éléments */
+  }
+  
+  .car-favorite-cars:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Increased shadow on hover */
+  }
+  
+  .car-favorite-cars img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #333; /* Darker border */
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+  }
+  
+  .car-details-favorite-cars {
+    padding: 15px;
+  }
+  
+  .car-details-favorite-cars h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff; /* White text */
+  }
+  
+  .car-details-favorite-cars p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #ccc; /* Lighter text */
+  }
+  
+  .pagination-favorite-cars {
+    margin-top: 40px; /* Increased margin */
+  }
+  
+  .pagination-favorite-cars button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #18a5a7; /* Accent color */
+    color: #fff; /* White text */
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-favorite-cars button.active-favorite-cars {
+    background-color: #085c5d; /* Darker accent color on active state */
+  }
+  

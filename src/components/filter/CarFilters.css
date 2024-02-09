@@ -1,0 +1,190 @@
+/* CarFilters.css */
+
+.car-filters-container {
+  text-align: center;
+  background-color: #212121; /* Dark background color */
+  padding: 40px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+}
+
+.filters {
+  margin-bottom: 20px; /* Increased margin */
+}
+
+.filters select {
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff; /* White background */
+  color: #333; /* Dark text */
+  cursor: pointer;
+}
+
+.filters select:focus {
+  outline: none;
+}
+
+.price-filter,
+.mileage-filter {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+  position: relative;
+  width: 200px;
+}
+
+.price-filter p,
+.mileage-filter p {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+}
+
+.price-filter .slider,
+.mileage-filter .slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #18A5A7, #4CAF50);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.price-filter .slider:hover,
+.mileage-filter .slider:hover {
+  opacity: 1;
+}
+
+.price-filter .slider::-webkit-slider-thumb,
+.mileage-filter .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.price-filter .slider::-moz-range-thumb,
+.mileage-filter .slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.car-list-featured-cars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.car-featured-cars {
+  width: 300px;
+  margin: 20px;
+  border: 1px solid #333; /* Darker border */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-featured-cars:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Increased shadow on hover */
+}
+
+.car-featured-cars img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #333; /* Darker border */
+  border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+.car-details-featured-cars {
+  padding: 15px;
+}
+
+.car-details-featured-cars h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #fff; /* White text */
+}
+
+.car-details-featured-cars p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #ccc; /* Lighter text */
+}
+
+.pagination-featured-cars {
+  margin-top: 40px; /* Increased margin */
+}
+
+.pagination-featured-cars button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #18A5A7; /* Accent color */
+  color: #fff; /* White text */
+  transition: background-color 0.3s ease;
+}
+
+.pagination-featured-cars button.active-featured-cars {
+  background-color: #085c5d; /* Darker accent color on active state */
+}
+
+/* Heart container styles */
+.heart-container {
+  --heart-color: rgb(255, 91, 137);
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
+.heart-container .checkbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 20;
+}
+
+.heart-container .svg-container {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-container .svg-outline,
+.heart-container .svg-filled {
+  fill: var(--heart-color);
+  position: absolute;
+}
+
+.heart-container .svg-filled {
+  display: none;
+}
+
+.heart-container .checkbox:checked ~ .svg-container .svg-filled {
+  display: block;
+}

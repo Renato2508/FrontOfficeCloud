@@ -1,0 +1,65 @@
+/* MessengerComponent.css */
+
+.messenger-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .messenger-header {
+    padding: 10px;
+    background-color: #4267B2; /* Facebook blue color */
+    color: #fff;
+    text-align: center;
+  }
+  
+  .messenger-body {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+  }
+  
+  .message-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .message {
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+  }
+  
+  .user {
+    background-color: #DCF8C6; /* Light green for user messages */
+    align-self: flex-end;
+  }
+  
+  .message-input {
+    display: flex;
+    padding: 10px;
+  }
+  
+  input {
+    flex: 1;
+    padding: 8px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4267B2; /* Facebook blue color */
+    color: #fff;
+    cursor: pointer;
+  }
+  
