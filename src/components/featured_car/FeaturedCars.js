@@ -66,10 +66,10 @@ const FeaturedCars = () => {
   const handleNavigateToMessagePage = (id) => {
     if (localStorage.getItem('authToken') !== "true") {
         console.log("Navigating to MessagesPage");
-        navigate('/MessagesPage', { state: { id_auteur: id } });
+        navigate('https://main--lucent-basbousa-41ac08.netlify.app/MessagesPage', { state: { id_auteur: id } });
     } else {
         console.log("Navigating to Login");
-        navigate('/Login');
+        navigate('https://main--lucent-basbousa-41ac08.netlify.app/Login');
     }
 };
 
