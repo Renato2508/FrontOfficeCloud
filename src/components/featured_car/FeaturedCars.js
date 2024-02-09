@@ -63,11 +63,10 @@ const FeaturedCars = () => {
     console.log(`Toggle favorite for car with ID: ${idannonce}`);
   };
 
-  const handleNavigateToMessagePage = () => {
-    console.log("auth :" + localStorage.getItem("auth"));
-    if (localStorage.getItem("auth") === "true") {
+  const handleNavigateToMessagePage = (id) => {
+    if (localStorage.getItem('authToken') !== "true") {
         console.log("Navigating to MessagesPage");
-        navigate('/MessagesPage', { state: { id_auteur: 2 } });
+        navigate('/MessagesPage', { state: { id_auteur: id } });
     } else {
         console.log("Navigating to Login");
         navigate('/Login');
@@ -94,7 +93,7 @@ const FeaturedCars = () => {
             </div>
             <div className="button-container">
               <button className="details-button">Details</button>
-              <button className="message-button" onClick={handleNavigateToMessagePage}>Message</button>
+              <button className="message-button" onClick={() =>handleNavigateToMessagePage(car.user.iduser)}>Message</button>
             </div>
             <div className="heart-container" title="Add to Favorites">
               <input

@@ -7,18 +7,16 @@ import { useLocation } from 'react-router-dom';
 const MessagesPage = () => {
   const location = useLocation();
   const id = location?.state?.id_auteur;
-
-  if(id !== undefined){
-    console.log("id olona : "+id);
-  }
-
+  
   const [selectedUser, setSelectedUser] = useState(null);
   const [data, setData] = useState([]);
   const [discussionActuelle, setDiscussionActuelle] = useState([]);
+  const [message, setMessage] = useState('');
+  const [conversation, setConversation] = useState([]);
 
   useEffect(() => {
-    // Store the current page in localStorage when the route changes
     localStorage.setItem('lien', '/MessagesPage');
+    fetchData();
   }, []);
 
   const fetchData = async () => {
@@ -48,34 +46,43 @@ const MessagesPage = () => {
     }
   };
 
+  const handleUserClick = (discussion) => {
+    setDiscussionActuelle(discussion);
+    var selected_u;
+    if(localStorage.getItem('iduser') !== discussion.id1.toString()){
+        selected_u = discussion.nom1;
+    }else{
+        selected_u = discussion.nom2;
+    }
+    setSelectedUser(selected_u);
+    setConversation(discussion.messages);
+  };
+
+  // Open discussion directly if id is defined
   useEffect(() => {
+    if (id !== undefined) {
+      const existingDiscussion = data.find(
+        (discussion) =>
+          discussion.id1 === parseInt(id) || discussion.id2 === parseInt(id)
+      );
   
-    const initializeData = () => {
-      fetchData();
-    };
-  
-    initializeData();
-  }, []);
+      if (existingDiscussion) {
+        handleUserClick(existingDiscussion);
+      } else {
+        // Si la discussion n'existe pas, ouvrir une nouvelle discussion avec le destinataire
+        const newDiscussion = {
+          id1: localStorage.getItem("iduser"),
+          id2: parseInt(id),
+          nom1: localStorage.getItem("yourUserName"), // Remplacez par le nom de l'utilisateur actuel
+          nom2: "Destinataire", // Remplacez par le nom du destinataire si disponible
+          messages: [],
+        };
+        handleUserClick(newDiscussion);
+      }
+    }
+  }, [id, data]);
 
-  useEffect(() => {
-    // Store the current page in localStorage when the route changes
-    localStorage.setItem('lien', '/MessagesPage');
-  }, []);
-
-  // useEffect(() => {
-  //   if (id != null) {
-  //     const user = userList.find(user => user.id === id);
-  //     if (user) {
-  //       setSelectedUser(user);
-  //     }
-  //   }
-  // }, [id, userList,selectedUser]);
-
-
-  const [message, setMessage] = useState('');
-  const [conversation, setConversation] = useState([]);
-
-  // Fonction pour envoyer un message
+  // Function to send a message
   const sendMessage = async () => {
     if (message.trim() === '') return;
     var id_destinataire;
@@ -86,10 +93,7 @@ const MessagesPage = () => {
     }
     const newMessage = { iddestinataire: id_destinataire, message: message };
     const newMessage2 = { expediteur: localStorage.getItem('iduser'), message: message };
-    // console.log("id destinataire :"+id_destinataire);
     setConversation([...conversation, newMessage2]);
-    // console.log("teeeeeeeest : "+newMessage.message);
-    // setMessage('');
     try {
       var authToken = localStorage.getItem('authToken');
       const response = await fetch('https://cloud-back-voiture-production-3dbf.up.railway.app/discussion/message', {
@@ -118,20 +122,6 @@ const MessagesPage = () => {
 
     fetchData();
   };  
-
-  const handleUserClick = (discussion) => {
-
-    setDiscussionActuelle(discussion);
-    var selected_u;
-    if(localStorage.getItem('iduser') !== discussion.id1.toString()){
-        selected_u = discussion.nom1;
-    }else{
-        selected_u = discussion.nom2;
-    }
-    setSelectedUser(selected_u);
-    setConversation(discussion.messages);
-
-  };
 
   return (
     <>
