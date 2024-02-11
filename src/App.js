@@ -10,12 +10,13 @@ import FavoriteCars from './components/favorite_cars/FavoriteCars';
 import AnnonceUser from './components/annonces_user/AnnonceUser';
 
 const App = () => {
-  
+  console.log("lien ici :"+localStorage.getItem('lien'));
   const [lien, setLien] = useState('/FeaturedCars');
 
   useEffect(() => {
     if(localStorage.getItem('lien') !== null){
         console.log("lien ici :"+localStorage.getItem('lien'));
+        console.log("tonga condition");
         setLien(localStorage.getItem('lien'));
     }
   }, []);
