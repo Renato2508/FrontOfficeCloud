@@ -68,11 +68,11 @@ const FeaturedCars = () => {
     if (localStorage.getItem('authToken') !== null) {
         console.log("Navigating to MessagesPage");
         localStorage.setItem('lien', '/MessagesPage');
-        navigate('/');
+        navigate('/MessagesPage', { state: { id_auteur: id } });
     } else {
         console.log("Navigating to Login");
         localStorage.setItem('lien', '/Login');
-        navigate('/');
+        navigate('/Login');
     }
 };
 
