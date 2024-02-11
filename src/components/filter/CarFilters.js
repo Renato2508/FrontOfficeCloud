@@ -12,6 +12,7 @@ const CarFilters = () => {
   useEffect(() => {
     // Store the current page in localStorage when the route changes
     localStorage.setItem('lien', '/CarFilters');
+    console.log("lien ici :"+localStorage.getItem('lien'));
   }, []);
 
   const staticData = [
