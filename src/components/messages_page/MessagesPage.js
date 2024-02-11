@@ -16,6 +16,7 @@ const MessagesPage = () => {
 
   useEffect(() => {
     localStorage.setItem('lien', '/MessagesPage');
+    console.log("lien ici :"+localStorage.getItem('lien'));
     fetchData();
   }, []);
 
