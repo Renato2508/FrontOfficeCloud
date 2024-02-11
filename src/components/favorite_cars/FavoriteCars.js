@@ -11,6 +11,7 @@ const FavoriteCars = () => {
   useEffect(() => {
     // Store the current page in localStorage when the route changes
     localStorage.setItem('lien', '/FavoriteCars');
+    console.log("lien ici :"+localStorage.getItem('lien'));
   }, []);
 
   // Sample data for favorite cars
