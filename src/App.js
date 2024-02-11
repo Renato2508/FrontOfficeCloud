@@ -10,43 +10,29 @@ import FavoriteCars from './components/favorite_cars/FavoriteCars';
 import AnnonceUser from './components/annonces_user/AnnonceUser';
 
 const App = () => {
-  // State to track authentication status
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
   const [lien, setLien] = useState('/FeaturedCars');
 
   useEffect(() => {
-    if(localStorage.getItem('lien') != null){
+    if(localStorage.getItem('lien') !== null){
+        console.log("lien ici :"+localStorage.getItem('lien'));
         setLien(localStorage.getItem('lien'));
     }
   }, []);
 
-  useEffect(() => {
-    // Check if the user is authenticated based on your logic (e.g., token presence)
-    const authToken = localStorage.getItem('authToken');
-    setIsAuthenticated(!!authToken);
-  }, []);
-
-  // Function to handle authentication
-  const handleAuthentication = () => {
-    // Implement your authentication logic here
-    setIsAuthenticated(true);
-  };
-
-  // PrivateRoute component for securing routes
-  const PrivateRoute = ({ element, path }) => {
-    useEffect(() => {
-      // Store the current page in localStorage when the route changes
-      localStorage.setItem('currentPage', path);
-    }, [path]);
-
-    return isAuthenticated ? element : <Navigate to="/" />;
+  const PrivateRoute = ({ element }) => {
+    if(localStorage.getItem('authToken') === null){
+        return <LoginPage />;
+    }else{
+        return element;
+    }
   };
 
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to={lien} />} /> {/* Redirection vers FeaturedCars */}
-        <Route path="/Login" element={<LoginPage handleAuthentication={handleAuthentication} />} />
+        <Route path="/Login" element={<LoginPage />} />
         {/* PrivateRoute is used for HomePage, CarDetail, and ModernForm */}
         <Route path="/HomePage" element={<PrivateRoute element={<HomePage />} path="/HomePage" />} />
         <Route path="/SignupPage" element={<SignupPage />} />
