@@ -9,7 +9,8 @@ const LoginPage = () => {
 
   useEffect(() => {
     // Store the current page in localStorage when the route changes
-    localStorage.setItem('lien', '/LoginPage');
+    localStorage.setItem('lien', '/Login');
+    console.log("lien ici :"+localStorage.getItem('lien'));
   }, []);
 
   const handleLogin = async (e) => {
@@ -31,7 +32,7 @@ const LoginPage = () => {
         localStorage.setItem('authToken',data.object.token);
         localStorage.setItem('iduser',data.object.iduser);
         console.log('local storage : '+localStorage.getItem('authToken'));
-        navigate('/HomePage', { state: { type: 2 } });
+        navigate('/FeaturedCars');
       } else {
         console.log('Login failed:', data)
         console.error('Login failed:', response.status, response.statusText);
