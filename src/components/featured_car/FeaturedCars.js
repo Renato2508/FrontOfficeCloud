@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './FeaturedCars.css';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
 
 const FeaturedCars = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [data,setData] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,6 +14,7 @@ const FeaturedCars = () => {
   useEffect(() => {
     // Store the current page in localStorage when the route changes
     localStorage.setItem('lien', '/FeaturedCars');
+    console.log("lien ici :"+localStorage.getItem('lien'));
   }, []);
 
   useEffect(() => {
@@ -64,14 +65,14 @@ const FeaturedCars = () => {
   };
 
   const handleNavigateToMessagePage = (id) => {
-    if (localStorage.getItem('authToken') !== "true") {
+    if (localStorage.getItem('authToken') !== null) {
         console.log("Navigating to MessagesPage");
-        // navigate('/MessagesPage', { state: { id_auteur: id } });
-        <Navigate to='/MessagesPage' />
+        localStorage.setItem('lien', '/MessagesPage');
+        navigate('/');
     } else {
         console.log("Navigating to Login");
-        // navigate('/Login');
-      <Navigate to='/Login' />
+        localStorage.setItem('lien', '/Login');
+        navigate('/');
     }
 };
 
